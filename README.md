@@ -12,87 +12,82 @@
 
 ## 📖 プロダクト概要
 
-日本国内では単身高齢者、フリーランス、ナイトワーク従事者、外国人などの増加に伴い、「預貯金や支払い能力はあるのに、画一的な会社員向け審査基準で落とされる」賃貸難民問題が深刻化しています。また貸主側も、「孤独死」「家賃滞納」「残置物放置」への不安から空室でも受け入れを躊躇しています。
+RentPassは、**「審査で落とす」のではなく「貸主が懸念するリスクを対策済み条件に変換して貸す」** アプローチのSaaSです。
 
-RentPassは、**「審査で落とす」のではなく「貸主が懸念するリスクを対策済み条件に変換して貸す」** アプローチを採用したプラットフォームです。
+日本国内では、単身高齢者、保証人を用意しづらい人、フリーランス、個人事業主、ナイトワーク従事者、外国人など、預貯金や支払い能力はあるのに画一的な会社員向け審査基準で説明しづらい入居希望者がいます。一方で貸主側も、孤独死、家賃滞納、残置物、緊急連絡不能への不安から、空室でも受け入れを躊躇します。
 
-```
-       ┌────────────────────────────────────────────────────────┐
-       │                       RentPass                         │
-       │           (賃貸リスク条件設計プラットフォーム)           │
-       └────────────────────────────────────────────────────────┘
-          ▲                    ▲                   ▲
-          │                    │                   │
-  ┌───────┴──────┐      ┌──────┴──────┐     ┌──────┴──────┐
-  │  入居希望者  │      │  管理会社   │     │  貸主(オーナー)│
-  │ (Tenant)     │      │  (Property) │     │  (Landlord) │
-  └──────────────┘      └─────────────┘     └─────────────┘
-          ▲                    ▲
-          │                    │
-          └──────────┬─────────┘
-                     │
-              ┌──────┴──────┐
-              │  仲介会社   │
-              │  (Broker)   │
-              └─────────────┘
+RentPassはこのギャップを、信用スコアではなく、**入居安心レポート** と **受け入れ条件ビルダー** で解決します。
+
+```text
+入居希望者
+  ↓ 信用パス提出
+管理会社・仲介会社
+  ↓ 受け入れ条件設計
+オーナー
+  ↓ 条件付き承認
+契約・入居後見守り
 ```
 
 ---
 
 ## 🌟 4つの安心の柱
 
-1. **🧓 見守り・安否確認システム (Senior Safety)**
+1. **🧓 見守り・安否確認**
    - LINE / SMS / Web によるワンタップ定期安否確認。
-   - 段階的エスカレーションフロー（12h 注意 → 24h 家族通知 → 48h 居住支援法人駆けつけ）。
-   - 改正住宅セーフティネット法（居住サポート住宅）準拠。
+   - 未応答時の段階的エスカレーション。
+   - 管理会社向けの対応ログとアラート管理。
 
-2. **🏦 家賃前払い・信託リザーブ保全 (Payment & Trust)**
-   - 資金決済法リスクを完全回避する**自社非預託**アーキテクチャ。
-   - 提携信託会社（前払家賃保全信託）および保証会社＋収納代行とのAPI連携。
-   - 3〜12ヶ月分の家賃リザーブと毎月の自動払い出し管理。
+2. **🏦 前払い・保証・信託リザーブ**
+   - RentPass自身は資金を預からない自社非預託アーキテクチャ。
+   - 保証会社、収納代行、信託会社のステータスを統合管理。
+   - 3〜12か月分の家賃リザーブ構想に対応。
 
-3. **📄 資産・支払い能力の代替証明 (Solvency Pass)**
-   - 口座残高証明、確定申告書、前払いコミットメントを統合した「RentPass 信用サマリー」。
-   - QRコード付きの真正性検証。
+3. **📄 代替信用証明**
+   - 本人確認、収入・資産確認、前払い可能月数、緊急連絡体制、見守り設定を統合。
+   - 職業名や年齢だけでなく、貸主が判断しやすい対策済み項目として提示。
 
-4. **🤝 残置物処理・死後事務委任合意 (Residual Goods Governance)**
-   - 国土交通省「残置物の処理等に関するモデル契約条項」準拠の電子合意。
+4. **🤝 残置物・緊急対応ガバナンス**
+   - 残置物処理、保険、支援者連携、緊急連絡先確認を一体で管理。
+   - オーナーには詳細個人情報ではなく、必要な対策状況だけを開示。
+
+---
+
+## 🧭 画面遷移イメージ
+
+主要ユースケースの画面遷移をSVGで管理しています。GitHub上でそのままプレビューできます。
+
+![RentPass use-case transition map](docs/assets/use-case-transitions.svg)
 
 ---
 
 ## 📂 リポジトリ構成
 
-```
+```text
 rentpass/
 ├── .github/                           # CI/CD & GitHub テンプレート
-│   ├── workflows/ci.yml               # GitHub Actions (Lint, Typecheck, Build)
+│   ├── workflows/ci.yml               # GitHub Actions
 │   ├── ISSUE_TEMPLATE/                # バグ報告・機能提案テンプレート
 │   └── pull_request_template.md
-├── docs/                              # 完全版 仕様・事業戦略ドキュメント (全11編)
-│   ├── 00_PRFAQ.md                    # Amazon式 PR/FAQ（プレスリリース & FAQ）
+├── docs/                              # 仕様・事業戦略ドキュメント
+│   ├── 00_PRFAQ.md                    # PRFAQ
 │   ├── 01_LEAN_CANVAS.md              # リーンキャンバス
-│   ├── 02_VALUE_PROPOSITION.md        # 4ステークホルダー別バリュープロポジション
-│   ├── 03_REQUIREMENTS.md             # 機能要件・非機能要件定義書 (BRD/PRD)
-│   ├── 04_SCREEN_DESIGN.md            # 画面設計・UIコンポーネント・画面遷移図
-│   ├── 05_GTM.md                      # GTM戦略・アライアンス計画
-│   ├── 06_DATA_MODEL.md               # ER図・テーブル定義・RLSセキュリティ
-│   ├── 07_COMPLIANCE_AND_RISK.md      # 関連法規分析（資金決済法・宅建業法・住宅セーフティネット法等）
-│   ├── 08_USE_CASE_TRANSITIONS.md     # ユースケース別ライフサイクル状態遷移図
-│   ├── 09_PAYMENT_TRUST.md            # 前払い家賃保全信託・エスクロー・収納代行詳細
-│   └── 10_ROADMAP.md                  # フェーズ別開発・事業ロードマップ
-├── supabase/                          # データベース定義 & シードデータ
-│   ├── migrations/
-│   │   └── 20260815000000_init_schema.sql  # DDL (テーブル, ENUM, RLS, トリガー)
-│   └── seed.sql                       # リアルな検証用シードデータ
-├── src/                               # Next.js / TypeScript アプリケーション
-│   ├── app/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx                   # トップ / 概要 & ロール選択
-│   │   ├── tenant/page.tsx            # 入居者ポータル (パス作成・安否チェックイン)
-│   │   ├── management/page.tsx        # 管理・仲介ダッシュボード (条件設計・アラート監視)
-│   │   └── owner/page.tsx             # オーナーポータル (収支・リザーブ保全状況)
-│   ├── styles/globals.css             # Vanilla CSS デザインシステム
-│   └── types/index.ts                 # TypeScript 型定義
+│   ├── 02_VALUE_PROPOSITION.md        # バリュープロポジション
+│   ├── 03_REQUIREMENTS.md             # 要件定義
+│   ├── 04_SCREEN_DESIGN.md            # 画面設計
+│   ├── 05_GTM.md                      # GTM戦略
+│   ├── 06_DATA_MODEL.md               # データモデル/RLS
+│   ├── 07_COMPLIANCE_AND_RISK.md      # 法務・リスク論点
+│   ├── 08_USE_CASE_TRANSITIONS.md     # ユースケース別画面遷移
+│   ├── 09_PAYMENT_TRUST.md            # 前払家賃保全信託/エスクロー
+│   ├── 10_ROADMAP.md                  # 開発・事業ロードマップ
+│   ├── 11_MVP_IMPLEMENTATION_BACKLOG.md # MVP実装バックログ
+│   └── assets/use-case-transitions.svg  # 画面遷移図
+├── supabase/                          # DB定義 & シード
+├── src/                               # Next.js / TypeScript アプリ
+│   ├── app/page.tsx                   # トップ
+│   ├── app/tenant/page.tsx            # 入居者ポータル
+│   ├── app/management/page.tsx        # 管理・仲介ダッシュボード
+│   └── app/owner/page.tsx             # オーナーポータル
 ├── package.json
 ├── tsconfig.json
 ├── next.config.mjs
@@ -101,20 +96,17 @@ rentpass/
 
 ---
 
-## 🚀 クイックスタート (ローカル起動)
+## 🚀 クイックスタート
 
-### 1. 依存パッケージのインストール
 ```bash
 npm install
-```
-
-### 2. 開発サーバーの起動
-```bash
 npm run dev
 ```
+
 ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
 
-### 3. 型検査 & ビルド確認
+型検査とビルド確認:
+
 ```bash
 npm run typecheck
 npm run build
@@ -122,30 +114,35 @@ npm run build
 
 ---
 
-## 🔗 GitHub への Push 手順
+## 🧩 MVP実装方針
 
-本ディレクトリは Git 初期化および初期コミットが完了しています。GitHub 上で新規リポジトリを作成後、以下を実行してください。
+MVPでは本格的な物件検索ポータルは作らず、**紹介された物件に対して信用パスを提出し、管理会社が受け入れ条件を設計し、オーナーが入居安心レポートで判断する** ところに集中します。
 
-### GitHub CLI (`gh`) を使用する場合:
-```bash
-gh repo create takashi-uchida/rentpass --public --source=. --remote=origin --push
-```
+実装順序:
 
-### Git コマンド (SSH) を使用する場合:
-```bash
-git remote add origin git@github.com:takashi-uchida/rentpass.git
-git branch -M main
-git push -u origin main
-```
+1. 型とモックデータを固める
+2. 入居希望者信用パスを実装する
+3. 管理会社申込レビューを実装する
+4. 受け入れ条件ビルダーを実装する
+5. オーナー向けレポートを実装する
+6. 入居後見守りを実装する
+7. Supabase連携を本実装へ移す
+8. 外部サービス連携をスタブから実APIへ差し替える
 
-### Git コマンド (HTTPS) を使用する場合:
-```bash
-git remote add origin https://github.com/takashi-uchida/rentpass.git
-git branch -M main
-git push -u origin main
-```
+詳細は [`docs/11_MVP_IMPLEMENTATION_BACKLOG.md`](docs/11_MVP_IMPLEMENTATION_BACKLOG.md) を参照してください。
+
+---
+
+## ⚠️ 設計上の重要原則
+
+- RentPassは信用スコアで人を選別しない。
+- 「信用が低い人」ではなく「従来審査では信用を証明しにくい人」と扱う。
+- RentPass自身は前払い家賃を預からない。
+- オーナーには詳細な健康情報、通帳画像、センシティブな事情を出しすぎない。
+- 管理会社・オーナー・入居希望者の権限を分離し、重要操作を監査ログに残す。
 
 ---
 
 ## 📜 ライセンス
+
 MIT License
