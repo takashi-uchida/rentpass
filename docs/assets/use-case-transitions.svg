@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">RentPass use-case transition map</title>
+  <desc id="desc">Use-case level screen transition diagram for tenant, management company, owner, and monitoring flows.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f9ff; }
+      .panel { fill: #ffffff; stroke: #dbe5ff; stroke-width: 2; rx: 24; }
+      .panelGreen { fill: #f3fff9; stroke: #bdebd2; stroke-width: 2; rx: 24; }
+      .panelPurple { fill: #fbf8ff; stroke: #dac9ff; stroke-width: 2; rx: 24; }
+      .panelOrange { fill: #fff8ef; stroke: #ffd8a8; stroke-width: 2; rx: 24; }
+      .header { fill: #0f2470; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 34px; font-weight: 800; }
+      .subtitle { fill: #42526e; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; }
+      .section { fill: #0f2470; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 22px; font-weight: 800; }
+      .label { fill: #172b4d; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; font-weight: 700; }
+      .small { fill: #44546f; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; }
+      .tiny { fill: #5e6c84; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; }
+      .phone { fill: #ffffff; stroke: #1f2d50; stroke-width: 3; rx: 24; }
+      .screen { fill: #f9fbff; stroke: #e7edff; stroke-width: 1; rx: 12; }
+      .barBlue { fill: #334bff; }
+      .barGreen { fill: #1fbd7f; }
+      .barPurple { fill: #7b61ff; }
+      .barOrange { fill: #ff9f43; }
+      .check { fill: #1fbd7f; }
+      .warning { fill: #ff9f43; }
+      .arrowBlue { stroke: #334bff; stroke-width: 3; fill: none; marker-end: url(#arrowBlue); }
+      .arrowGreen { stroke: #159a64; stroke-width: 3; fill: none; marker-end: url(#arrowGreen); }
+      .arrowPurple { stroke: #7b61ff; stroke-width: 3; fill: none; marker-end: url(#arrowPurple); }
+      .arrowOrange { stroke: #ff8a00; stroke-width: 3; fill: none; marker-end: url(#arrowOrange); }
+      .chip { fill: #eef3ff; stroke: #cbd8ff; rx: 14; }
+      .chipGreen { fill: #e8fff4; stroke: #aee7c9; rx: 14; }
+      .chipPurple { fill: #f1ecff; stroke: #d4c7ff; rx: 14; }
+    </style>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#334bff" /></marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#159a64" /></marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#7b61ff" /></marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#ff8a00" /></marker>
+  </defs>
+
+  <rect class="bg" width="1600" height="980" />
+
+  <text x="42" y="58" class="header">RentPass ユースケース別 画面遷移図</text>
+  <text x="44" y="90" class="subtitle">「貸せない理由」を、前払い・見守り・緊急連絡・保証・保険の“貸せる条件”に変換する主要フロー</text>
+
+  <rect x="1130" y="34" width="410" height="48" class="panel" />
+  <circle cx="1160" cy="58" r="7" fill="#334bff" /><text x="1175" y="63" class="small">入居希望者</text>
+  <circle cx="1265" cy="58" r="7" fill="#159a64" /><text x="1280" y="63" class="small">管理・仲介会社</text>
+  <circle cx="1410" cy="58" r="7" fill="#7b61ff" /><text x="1425" y="63" class="small">オーナー</text>
+
+  <!-- Tenant flow -->
+  <rect x="34" y="126" width="1496" height="238" class="panel" />
+  <text x="58" y="160" class="section">1. 入居希望者フロー：紹介リンクを受け、信用パスを提出する</text>
+  <g transform="translate(60 188)">
+    <rect class="phone" width="118" height="146" />
+    <rect x="12" y="18" width="94" height="46" class="screen" />
+    <text x="20" y="39" class="tiny">紹介リンク</text>
+    <text x="20" y="57" class="tiny">申込物件</text>
+    <rect x="20" y="92" width="78" height="22" class="barBlue" rx="10" />
+    <text x="32" y="108" fill="#fff" font-size="11" font-family="sans-serif">開く</text>
+    <text x="4" y="168" class="label">① 物件紹介</text>
+  </g>
+  <path d="M188 260 L252 260" class="arrowBlue" />
+  <g transform="translate(270 188)">
+    <rect class="phone" width="118" height="146" />
+    <text x="26" y="42" class="label">RentPass</text>
+    <rect x="18" y="68" width="82" height="18" class="screen" />
+    <rect x="18" y="96" width="82" height="18" class="screen" />
+    <rect x="20" y="122" width="78" height="18" class="barBlue" rx="9" />
+    <text x="4" y="168" class="label">② 登録/ログイン</text>
+  </g>
+  <path d="M398 260 L462 260" class="arrowBlue" />
+  <g transform="translate(480 188)">
+    <rect class="phone" width="118" height="146" />
+    <text x="20" y="35" class="label">信用パス</text>
+    <rect x="16" y="52" width="86" height="12" class="chip" />
+    <rect x="16" y="76" width="86" height="10" class="chipGreen" />
+    <rect x="16" y="98" width="86" height="10" class="chipGreen" />
+    <rect x="16" y="120" width="86" height="10" class="chip" />
+    <text x="4" y="168" class="label">③ 信用パス確認</text>
+  </g>
+  <path d="M608 260 L672 260" class="arrowBlue" />
+  <g transform="translate(690 188)">
+    <rect class="phone" width="118" height="146" />
+    <circle cx="59" cy="54" r="26" fill="#dbe5ff" />
+    <rect x="24" y="92" width="70" height="24" class="screen" />
+    <rect x="20" y="124" width="78" height="18" class="barBlue" rx="9" />
+    <text x="4" y="168" class="label">④ 本人確認</text>
+  </g>
+  <path d="M818 260 L882 260" class="arrowBlue" />
+  <g transform="translate(900 188)">
+    <rect class="phone" width="118" height="146" />
+    <text x="22" y="35" class="label">支払いプラン</text>
+    <rect x="18" y="52" width="82" height="26" class="chip" />
+    <rect x="18" y="86" width="82" height="30" class="chipPurple" />
+    <text x="30" y="107" class="tiny">6か月前払い</text>
+    <rect x="20" y="124" width="78" height="18" class="barBlue" rx="9" />
+    <text x="0" y="168" class="label">⑤ 前払い/保証選択</text>
+  </g>
+  <path d="M1028 260 L1092 260" class="arrowBlue" />
+  <g transform="translate(1110 188)">
+    <rect class="phone" width="118" height="146" />
+    <text x="20" y="35" class="label">見守り設定</text>
+    <rect x="20" y="56" width="78" height="18" class="chipGreen" />
+    <text x="30" y="69" class="tiny">LINE</text>
+    <rect x="20" y="84" width="78" height="18" class="chip" />
+    <text x="30" y="97" class="tiny">SMS</text>
+    <rect x="20" y="124" width="78" height="18" class="barBlue" rx="9" />
+    <text x="0" y="168" class="label">⑥ 緊急連絡先</text>
+  </g>
+  <path d="M1238 260 L1302 260" class="arrowBlue" />
+  <g transform="translate(1320 188)">
+    <rect class="phone" width="118" height="146" />
+    <circle cx="59" cy="63" r="30" class="check" />
+    <text x="47" y="75" fill="#fff" font-size="36" font-family="sans-serif">✓</text>
+    <text x="28" y="115" class="label">申込完了</text>
+    <text x="0" y="168" class="label">⑦ 提出完了</text>
+  </g>
+
+  <!-- Management flow -->
+  <rect x="34" y="396" width="1496" height="238" class="panelGreen" />
+  <text x="58" y="430" class="section">2. 管理・仲介会社フロー：申込受付からオーナー承認、契約準備まで</text>
+  <g transform="translate(60 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="20" y="30" class="label">申込一覧</text>
+    <rect x="18" y="48" width="96" height="12" class="chip" />
+    <rect x="18" y="72" width="96" height="12" class="chipGreen" />
+    <rect x="18" y="96" width="96" height="12" class="chip" />
+    <text x="6" y="154" class="label">① 申込受付</text>
+  </g>
+  <path d="M204 520 L284 520" class="arrowGreen" />
+  <g transform="translate(300 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="20" y="30" class="label">審査詳細</text>
+    <circle cx="30" cy="58" r="9" class="check" /><text x="48" y="62" class="tiny">本人確認</text>
+    <circle cx="30" cy="80" r="9" class="check" /><text x="48" y="84" class="tiny">資産確認</text>
+    <circle cx="30" cy="102" r="9" class="warning" /><text x="48" y="106" class="tiny">保証申請</text>
+    <text x="6" y="154" class="label">② 情報確認</text>
+  </g>
+  <path d="M444 520 L524 520" class="arrowGreen" />
+  <g transform="translate(540 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="16" y="30" class="label">条件ビルダー</text>
+    <rect x="18" y="48" width="96" height="14" class="chipGreen" />
+    <rect x="18" y="70" width="96" height="14" class="chipPurple" />
+    <rect x="18" y="92" width="96" height="14" class="chip" />
+    <text x="6" y="154" class="label">③ 条件設計</text>
+  </g>
+  <path d="M684 520 L764 520" class="arrowGreen" />
+  <g transform="translate(780 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="16" y="30" class="label">安心レポート</text>
+    <circle cx="28" cy="56" r="8" class="check" /><text x="44" y="60" class="tiny">前払い</text>
+    <circle cx="28" cy="78" r="8" class="check" /><text x="44" y="82" class="tiny">見守り</text>
+    <circle cx="28" cy="100" r="8" class="check" /><text x="44" y="104" class="tiny">連絡先</text>
+    <text x="6" y="154" class="label">④ レポート生成</text>
+  </g>
+  <path d="M924 520 L1004 520" class="arrowGreen" />
+  <g transform="translate(1020 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="18" y="30" class="label">オーナー送付</text>
+    <rect x="20" y="54" width="92" height="28" class="chipPurple" />
+    <text x="42" y="73" class="tiny">共有URL</text>
+    <rect x="22" y="98" width="88" height="18" class="barGreen" rx="9" />
+    <text x="6" y="154" class="label">⑤ 承認依頼</text>
+  </g>
+  <path d="M1164 520 L1244 520" class="arrowGreen" />
+  <g transform="translate(1260 458)">
+    <rect class="phone" width="132" height="130" />
+    <text x="24" y="30" class="label">契約準備</text>
+    <circle cx="30" cy="58" r="9" class="check" /><text x="48" y="62" class="tiny">重要事項</text>
+    <circle cx="30" cy="80" r="9" class="check" /><text x="48" y="84" class="tiny">電子署名</text>
+    <circle cx="30" cy="102" r="9" class="check" /><text x="48" y="106" class="tiny">初回入金</text>
+    <text x="6" y="154" class="label">⑥ 契約へ</text>
+  </g>
+
+  <!-- Owner and monitoring -->
+  <rect x="34" y="666" width="716" height="238" class="panelPurple" />
+  <text x="58" y="700" class="section">3. オーナーフロー：1枚レポートで条件付き承認</text>
+  <g transform="translate(70 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="22" y="30" class="label">通知メール</text>
+    <rect x="20" y="54" width="92" height="36" class="chipPurple" />
+    <text x="30" y="76" class="tiny">確認する</text>
+    <text x="6" y="154" class="label">① 通知</text>
+  </g>
+  <path d="M214 792 L304 792" class="arrowPurple" />
+  <g transform="translate(320 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="12" y="30" class="label">入居安心レポート</text>
+    <circle cx="28" cy="58" r="8" class="check" /><text x="44" y="62" class="tiny">6か月前払い</text>
+    <circle cx="28" cy="80" r="8" class="check" /><text x="44" y="84" class="tiny">週3回見守り</text>
+    <circle cx="28" cy="102" r="8" class="check" /><text x="44" y="106" class="tiny">保証会社</text>
+    <text x="6" y="154" class="label">② 確認</text>
+  </g>
+  <path d="M464 792 L554 792" class="arrowPurple" />
+  <g transform="translate(570 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="22" y="30" class="label">判断</text>
+    <rect x="20" y="48" width="92" height="20" class="chipGreen" /><text x="40" y="62" class="tiny">承認</text>
+    <rect x="20" y="76" width="92" height="20" class="chip" /><text x="34" y="90" class="tiny">条件追加</text>
+    <rect x="20" y="104" width="92" height="20" fill="#ffe8e8" stroke="#ffc9c9" rx="10" />
+    <text x="44" y="118" class="tiny">見送り</text>
+    <text x="6" y="154" class="label">③ 承認</text>
+  </g>
+
+  <rect x="784" y="666" width="746" height="238" class="panelOrange" />
+  <text x="808" y="700" class="section">4. 入居後見守りフロー：チェックインからアラート対応まで</text>
+  <g transform="translate(820 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="28" y="30" class="label">定期確認</text>
+    <circle cx="66" cy="70" r="28" class="check" />
+    <text x="52" y="81" fill="#fff" font-size="28" font-family="sans-serif">✓</text>
+    <text x="6" y="154" class="label">① 元気です</text>
+  </g>
+  <path d="M964 792 L1054 792" class="arrowOrange" />
+  <g transform="translate(1070 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="26" y="30" class="label">未応答</text>
+    <circle cx="66" cy="70" r="28" class="warning" />
+    <text x="57" y="81" fill="#fff" font-size="30" font-family="sans-serif">!</text>
+    <text x="6" y="154" class="label">② アラート</text>
+  </g>
+  <path d="M1214 792 L1304 792" class="arrowOrange" />
+  <g transform="translate(1320 730)">
+    <rect class="phone" width="132" height="130" />
+    <text x="16" y="30" class="label">エスカレーション</text>
+    <rect x="20" y="50" width="92" height="15" class="chip" /><text x="28" y="61" class="tiny">本人再通知</text>
+    <rect x="20" y="73" width="92" height="15" class="chip" /><text x="28" y="84" class="tiny">緊急連絡先</text>
+    <rect x="20" y="96" width="92" height="15" class="chipGreen" /><text x="28" y="107" class="tiny">管理会社対応</text>
+    <text x="6" y="154" class="label">③ 対応記録</text>
+  </g>
+
+  <!-- External services -->
+  <rect x="34" y="925" width="1496" height="38" class="panel" />
+  <text x="58" y="949" class="small">外部連携：eKYC / 保証会社 / 収納代行 / 信託会社 / 見守りサービス / 保険会社。RentPassは資金を保有せず、同意・ステータス・監査ログを統合管理する。</text>
+</svg>
