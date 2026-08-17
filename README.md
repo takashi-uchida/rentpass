@@ -72,6 +72,19 @@ MVPで手戻りが大きくなりやすい領域を先に定義しています�
 | 法務・コンプライアンス | [`docs/15_COMPLIANCE_CHECKLIST.md`](docs/15_COMPLIANCE_CHECKLIST.md) | MVPでやること/やらないこと、専門家確認項目 |
 | Stigma-freeコピー | [`docs/16_STIGMA_FREE_COPY_GUIDELINES.md`](docs/16_STIGMA_FREE_COPY_GUIDELINES.md) | 使用禁止表現、推奨表現、通知・免責文言 |
 | パイロット検証 | [`docs/17_PILOT_VALIDATION_PLAN.md`](docs/17_PILOT_VALIDATION_PLAN.md) | KPI、ヒアリング、手動運用、価格仮説 |
+| UIコンポーネント | [`docs/18_DESIGN_SYSTEM.md`](docs/18_DESIGN_SYSTEM.md) | `src/components/rentpass.tsx` |
+| モックデータ | [`docs/19_MOCK_DATA_GUIDE.md`](docs/19_MOCK_DATA_GUIDE.md) | `src/mocks/rentpass.ts` |
+
+---
+
+## 🧪 デモ画面
+
+共通UIコンポーネントとfixturesを確認するためのデモページを用意しています。
+
+```bash
+npm run dev
+# http://localhost:3000/demo
+```
 
 ---
 
@@ -102,13 +115,18 @@ rentpass/
 │   ├── 15_COMPLIANCE_CHECKLIST.md     # 法務・コンプライアンスチェックリスト
 │   ├── 16_STIGMA_FREE_COPY_GUIDELINES.md # 文言・免責ガイド
 │   ├── 17_PILOT_VALIDATION_PLAN.md    # パイロット検証計画
+│   ├── 18_DESIGN_SYSTEM.md            # UIコンポーネント/デザインシステム
+│   ├── 19_MOCK_DATA_GUIDE.md          # モックデータガイド
 │   └── assets/use-case-transitions.svg  # 画面遷移図
 ├── supabase/                          # DB定義 & シード
 ├── src/                               # Next.js / TypeScript アプリ
 │   ├── app/page.tsx                   # トップ
+│   ├── app/demo/page.tsx              # MVPコンポーネントデモ
 │   ├── app/tenant/page.tsx            # 入居者ポータル
 │   ├── app/management/page.tsx        # 管理・仲介ダッシュボード
 │   ├── app/owner/page.tsx             # オーナーポータル
+│   ├── components/rentpass.tsx        # RentPass共通UI
+│   ├── mocks/rentpass.ts              # デモfixtures
 │   └── types/index.ts                 # MVPドメイン型
 ├── package.json
 ├── tsconfig.json
@@ -144,14 +162,15 @@ MVPでは本格的な物件検索ポータルは作らず、**紹介された物
 
 1. 状態・開示・非預託支払いモデルを固める
 2. 法務・文言・パイロット検証計画を固める
-3. 型とモックデータを固める
-4. 入居希望者信用パスを実装する
-5. 管理会社申込レビューを実装する
-6. 受け入れ条件ビルダーを実装する
-7. オーナー向けレポートを実装する
-8. 入居後見守りを実装する
-9. Supabase連携を本実装へ移す
-10. 外部サービス連携をスタブから実APIへ差し替える
+3. 型・共通UI・モックデータを固める
+4. 申込紹介リンクを実装する
+5. 入居希望者信用パスを実装する
+6. 管理会社申込レビューを実装する
+7. 受け入れ条件ビルダーを実装する
+8. オーナー向けレポートを実装する
+9. 入居後見守りを実装する
+10. Supabase連携を本実装へ移す
+11. 外部サービス連携をスタブから実APIへ差し替える
 
 詳細は [`docs/11_MVP_IMPLEMENTATION_BACKLOG.md`](docs/11_MVP_IMPLEMENTATION_BACKLOG.md) を参照してください。
 
