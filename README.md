@@ -60,6 +60,18 @@ RentPassはこのギャップを、信用スコアではなく、**入居安心�
 
 ---
 
+## 🧱 実装前に固めた横断設計
+
+MVPで手戻りが大きくなりやすい3領域を先に定義しています。
+
+| 領域 | ドキュメント | 実装への反映 |
+| --- | --- | --- |
+| 申込・契約・見守り状態 | [`docs/12_STATE_MACHINES.md`](docs/12_STATE_MACHINES.md) | `ApplicationStatus` / `MonitoringStatus` / 状態遷移関数 |
+| 情報開示・同意 | [`docs/13_DISCLOSURE_CONSENT_MATRIX.md`](docs/13_DISCLOSURE_CONSENT_MATRIX.md) | `DisclosureRole` / `InformationCategory` / `disclosureMatrix` |
+| 非預託支払いモデル | [`docs/14_NON_CUSTODIAL_PAYMENT_MODEL.md`](docs/14_NON_CUSTODIAL_PAYMENT_MODEL.md) | `PaymentAssurance` / 保証・収納・信託ステータス |
+
+---
+
 ## 📂 リポジトリ構成
 
 ```text
@@ -81,13 +93,17 @@ rentpass/
 │   ├── 09_PAYMENT_TRUST.md            # 前払家賃保全信託/エスクロー
 │   ├── 10_ROADMAP.md                  # 開発・事業ロードマップ
 │   ├── 11_MVP_IMPLEMENTATION_BACKLOG.md # MVP実装バックログ
+│   ├── 12_STATE_MACHINES.md           # 申込・契約・見守りステータス
+│   ├── 13_DISCLOSURE_CONSENT_MATRIX.md # 情報開示・同意マトリクス
+│   ├── 14_NON_CUSTODIAL_PAYMENT_MODEL.md # 非預託支払いモデル
 │   └── assets/use-case-transitions.svg  # 画面遷移図
 ├── supabase/                          # DB定義 & シード
 ├── src/                               # Next.js / TypeScript アプリ
 │   ├── app/page.tsx                   # トップ
 │   ├── app/tenant/page.tsx            # 入居者ポータル
 │   ├── app/management/page.tsx        # 管理・仲介ダッシュボード
-│   └── app/owner/page.tsx             # オーナーポータル
+│   ├── app/owner/page.tsx             # オーナーポータル
+│   └── types/index.ts                 # MVPドメイン型
 ├── package.json
 ├── tsconfig.json
 ├── next.config.mjs
@@ -120,14 +136,15 @@ MVPでは本格的な物件検索ポータルは作らず、**紹介された物
 
 実装順序:
 
-1. 型とモックデータを固める
-2. 入居希望者信用パスを実装する
-3. 管理会社申込レビューを実装する
-4. 受け入れ条件ビルダーを実装する
-5. オーナー向けレポートを実装する
-6. 入居後見守りを実装する
-7. Supabase連携を本実装へ移す
-8. 外部サービス連携をスタブから実APIへ差し替える
+1. 状態・開示・非預託支払いモデルを固める
+2. 型とモックデータを固める
+3. 入居希望者信用パスを実装する
+4. 管理会社申込レビューを実装する
+5. 受け入れ条件ビルダーを実装する
+6. オーナー向けレポートを実装する
+7. 入居後見守りを実装する
+8. Supabase連携を本実装へ移す
+9. 外部サービス連携をスタブから実APIへ差し替える
 
 詳細は [`docs/11_MVP_IMPLEMENTATION_BACKLOG.md`](docs/11_MVP_IMPLEMENTATION_BACKLOG.md) を参照してください。
 
